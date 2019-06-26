@@ -182,6 +182,7 @@ class ClimaxScraper(object):
     def get_scraping(self, multi=None):
         start_time = datetime.now()
 
+        # Login
         parsed_page = self.get_x(self.URL)
         response = self.get_form_data(parsed_page, "")
         response['ctl00$cntMain$TXTGLOBALUSERNAME3'] = self.USERNAME
@@ -193,7 +194,6 @@ class ClimaxScraper(object):
         for selected in array:
             if selected.startswith(self.PRODUCT_LISTING_URL):
                 categories.append(selected)
-        categories = categories[0:25]
         print('There are {} categories for scraping'.format(len(categories)))
 
         if multi:
